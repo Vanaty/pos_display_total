@@ -2,7 +2,7 @@
     "name": "POS Display Total",
     "version": "1.2",
     "depends": ["point_of_sale"],
-    "author": "Toi",
+    "author": "Eric",
     "category": "Point of Sale",
     "license": "LGPL-3",
     "summary": "Envoie des produits sélectionnés vers une API externe",

@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
 ## Auteur
 
-**Toi** - Développeur du module
+**Eric** - Développeur du module
 
 ## Licence
 
