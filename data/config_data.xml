@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="config_api_base_url" model="ir.config_parameter">
+            <field name="key">pos_display_total.api_base_url</field>
+            <field name="value">http://localhost:8086</field>
+        </record>
+    </data>
+</odoo>
