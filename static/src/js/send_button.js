@@ -30,7 +30,7 @@ odoo.define('pos_display_total.SendButton', function (require) {
         }
 
         async _sendOrderAuto() {
-            console.log('Auto sending order 1');
+            // console.log('Auto sending order 1');
             clearTimeout(this._autoSendTimeout);
             this._autoSendTimeout = setTimeout(() => {
                 if (this.env.pos.get_order() && this.env.pos.get_order().orderlines) {
@@ -50,7 +50,7 @@ odoo.define('pos_display_total.SendButton', function (require) {
                         }
                     }
                 } else {
-                    console.log('No order lines to send, calling welcome API');
+                    // console.log('No order lines to send, calling welcome API');
                     this._callWelcome();
                 }
                 if (this._stopLoop) {
@@ -108,6 +108,10 @@ odoo.define('pos_display_total.SendButton', function (require) {
                 this._wellcomeLoaded = true;
             } catch (error) {
                 console.error('Network error:', error);
+                this.showPopup('OfflineErrorPopup', {
+                    title: 'Network Error',
+                    body: 'Failed to send products due to network issues or VDF server error.',
+                });
             }
         }
 
@@ -142,10 +146,6 @@ odoo.define('pos_display_total.SendButton', function (require) {
                     }
                 } catch (error) {
                     console.error('Network error:', error);
-                    this.showPopup('OfflineErrorPopup', {
-                        title: 'Network Error',
-                        body: 'Failed to send products due to network issues or VDF server error.',
-                    });
                 }
             }
         }

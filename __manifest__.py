@@ -6,10 +6,7 @@
     "category": "Point of Sale",
     "license": "LGPL-3",
     "summary": "Envoie des produits sélectionnés vers une API externe",
-    "data": [
-        "data/config_data.xml",
-        "views/pos_config_views.xml",
-    ],
+    "data": [],
     "assets": {
         "point_of_sale.assets": [
             "pos_display_total/static/src/js/send_button.js",
