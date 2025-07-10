@@ -2,7 +2,7 @@
 <template>
     <t t-name="SendButton" owl="1">
         <div class="control-button">
-            <i class="fa fa-paper-plane" role="img" aria-label="Send Products"/>
+            <i class="fa fa-paper-plane" role="img" aria-label="Send Bienvenue"/>
             Bienvenue
         </div>
     </t>
