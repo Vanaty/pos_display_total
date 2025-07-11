@@ -15,12 +15,14 @@ odoo.define('pos_display_total.ProductScreenInterval', function (require) {
 
             onMounted(() => this._startOrderMonitoring());
             onWillUnmount(() => this._stopOrderMonitoring());
+            useListener('trigger-welcome-call', this._callWelcome);
 
             this._oldOrders = [];
             this._wellcomeLoaded = false;
         }
 
         _startOrderMonitoring() {
+            this._callWelcome()
             if (this.intervalId) {
                 clearInterval(this.intervalId);
             }
@@ -104,10 +106,6 @@ odoo.define('pos_display_total.ProductScreenInterval', function (require) {
                 console.log("Welcome API called successfully.");
             } catch (error) {
                 console.error('Network error during welcome call:', error);
-                this.showPopup('OfflineErrorPopup', {
-                    title: 'Network Error',
-                    body: 'Failed to connect to VDF server for welcome message.',
-                });
             }
         }
     };
@@ -120,7 +118,7 @@ odoo.define('pos_display_total.ProductScreenInterval', function (require) {
             useListener('click', this._onClick);
         }
         async _onClick() {
-            this.env.pos.get_screen('ProductScreen')._callWelcome();
+            this.trigger('trigger-welcome-call');
         }
     }
     SendButton.template = 'SendButton';
