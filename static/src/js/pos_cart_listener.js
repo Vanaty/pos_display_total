@@ -42,6 +42,7 @@ odoo.define('pos_display_total.pos_cart_listener', function (require) {
                 name: line.product.display_name,
                 price: line.get_unit_price(),
                 quantity: line.quantity,
+                date: new Date().toISOString(),
             }));
             if (JSON.stringify(productsData) === JSON.stringify(this.oldData)) {
                 return;
