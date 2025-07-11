@@ -10,9 +10,9 @@
     "assets": {
         "point_of_sale.assets": [
             "pos_display_total/static/src/js/send_button.js",
-            "pos_display_total/static/src/js/pos_cart_listener.js",
+            # "pos_display_total/static/src/js/pos_cart_listener.js",
             "pos_display_total/static/src/xml/send_button.xml",
-            "pos_display_total/static/src/xml/pos_cart_listener_templates.xml"
+            # "pos_display_total/static/src/xml/pos_cart_listener_templates.xml"
         ]
     },
     "installable": True,

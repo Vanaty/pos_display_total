@@ -5,26 +5,15 @@ odoo.define('pos_display_total.pos_cart_listener', function (require) {
     const Registries = require('point_of_sale.Registries');
 
     const PosCartListenerOrder = (Order) => class PosCartListenerOrder extends Order {
-        constructor(...args) {
-            super(...args);
+        setup() {
+            super.setup();
             this.apiBaseUrl = 'http://localhost:8086';
             this.oldData = [];
         }
-        setup() {
-            super.setup();
-        }
+
         remove_orderline(line) {
             super.remove_orderline(line);
             if (line.get_product().display_name) {
-                this.onCartChange();
-            }
-        }
-
-        set_quantity(line, quantity, keep_price) {
-            const oldQuantity = line.get_quantity();
-            super.set_quantity(line, quantity, keep_price);
-
-            if (oldQuantity && oldQuantity !== line.get_quantity()) {
                 this.onCartChange();
             }
         }
@@ -89,21 +78,21 @@ odoo.define('pos_display_total.pos_cart_listener', function (require) {
             }
         }
 
-        set_unit_price(price) {
-            const oldPrice = this.price;
-            super.set_unit_price(price);
-            if (oldPrice !== this.price) {
-                this.order.onCartChange();
-            }
-        }
+        // set_unit_price(price) {
+        //     const oldPrice = this.price;
+        //     super.set_unit_price(price);
+        //     if (oldPrice !== this.price) {
+        //         this.order.onCartChange();
+        //     }
+        // }
 
-        set_discount(discount) {
-            const oldDiscount = this.discount;
-            super.set_discount(discount);
-            if (oldDiscount !== this.discount) {
-                this.order.onCartChange();
-            }
-        }
+        // set_discount(discount) {
+        //     const oldDiscount = this.discount;
+        //     super.set_discount(discount);
+        //     if (oldDiscount !== this.discount) {
+        //         this.order.onCartChange();
+        //     }
+        // }
     };
 
     Registries.Model.extend(Orderline, PosCartListenerOrderline);
